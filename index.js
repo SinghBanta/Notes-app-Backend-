@@ -3,8 +3,10 @@ const app=express();
 const mongoose=require('mongoose');
 const cors=require('cors');
 const routes = require('./routes/index');
+require('dotenv').config()
 
 const corsOrigin = process.env.CORS_ORIGIN
+
 
 
 
