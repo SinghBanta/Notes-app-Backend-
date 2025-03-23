@@ -3,15 +3,11 @@ const app=express();
 const mongoose=require('mongoose');
 const cors=require('cors');
 const routes = require('./routes/index');
-require('dotenv').config()
+require('dotenv').config();
 
-const corsOrigin = process.env.CORS_ORIGIN
-
-
-
-
+console.log(process.env.CORS_ORIGIN)
 app.use(cors({
-    origin:corsOrigin,
+    origin:process.env.CORS_ORIGIN,
     method:"GET,POST,PUT,DELETE"
 }))
 
@@ -19,7 +15,7 @@ app.use(express.json());
 
 app.use(routes);
 
-
+// console.log(process.env.DATABASE_URL)
 mongoose.connect(process.env.DATABASE_URL)
 .then(()=>{
     console.log("MongoDB is connected");
@@ -33,6 +29,8 @@ mongoose.connect(process.env.DATABASE_URL)
 .catch((err) => {
     console.log("Server is not responding", err);
 });
+
+
 
 
 
