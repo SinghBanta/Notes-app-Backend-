@@ -4,11 +4,13 @@ const User = require("../../models/User.model");
 const addUser=async(req,res)=>{
     try{
 
-        const {username,role}=req.body;
+        const {username,email,password,role}=req.body;
         console.log(addUser);
         
         const newUser = await User.create({ 
             username, 
+            email,
+            password,
             role 
         });
         console.log(newUser)
