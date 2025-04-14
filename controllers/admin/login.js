@@ -2,6 +2,8 @@ const UserModel = require("../../models/User.model");
 const jwt = require("jsonwebtoken"); // Require jwt for token generation
 
 
+
+
 const login = async (req, res) => {
     try{
         const {email}=req.body;
@@ -10,14 +12,18 @@ const login = async (req, res) => {
         const userVerification=await UserModel.findOne({ email});
         console.log("User Verification:", userVerification);
 
+        // Removed redundant userVerification check
 
         if (!userVerification) {
-            return res.status(401).json({ message: 'User not found' });
-            }
-        
+          return res.status(401).json({ message: 'User not found' });
+          }
 
-        if(userVerification.role==='admin'){
-        //    console.log(process.env.JWT_ADMIN_PASSWORD,JWT_ADMIN_PASSWORD);
+        if (userVerification.role === 'admin') {
+           console.log(process.env.JWT_ADMIN_PASSWORD);
+
+           
+
+            // console.log(process.env.JWT_ADMIN_PASSWORD);
 
         const token = jwt.sign(
             {
