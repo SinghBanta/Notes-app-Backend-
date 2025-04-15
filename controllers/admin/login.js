@@ -21,9 +21,6 @@ const login = async (req, res) => {
         if (userVerification.role === 'admin') {
            console.log(process.env.JWT_ADMIN_PASSWORD);
 
-           
-
-            // console.log(process.env.JWT_ADMIN_PASSWORD);
 
         const token = jwt.sign(
             {
